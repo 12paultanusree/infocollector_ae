@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Asset Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <style>
+    .receipt-image {
+        max-width: 300px;
+        margin: auto;
+        display: block;
+    }
+    .expense-table {
+        width: 100%;
+        margin: auto;
+    }
+    .expense-table th, .expense-table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2 class="text-center">Asset Details</h2>
+
+
+  <table class="table expense-table">
+    <tbody>
+    <tr>
+      <th>Asset Name</th>
+      <td th:text="${asset.assetName}"></td>
+    </tr>
+    <tr>
+      <th>Asset Id</th>
+      <td th:text="${asset.assetId}"></td>
+    </tr>
+    <tr>
+      <th>Category</th>
+      <td th:text="${asset.category}"></td>
+    </tr>
+    <tr>
+      <th>Description</th>
+      <td th:text="${asset.description}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="text-center">
+    <!-- Button to edit the expense -->
+    <a th:href="@{/asset/update/{id}(id=${asset.id})}" class="btn btn-secondary">Update Asset</a>
+    <!-- Button to download the expense details as PDF -->
+    <a th:href="@{/asset/download/{id}(id=${asset.id})}" class="btn btn-secondary">Download Asset as PDF</a>
+    <a th:if="${asset.docPath != null}" th:href="@{/files/{fileName}(fileName=${asset.docPath})}" class="btn btn-primary" target="_blank">View Attachment</a>
+  </div>
+
+</div>
+</body>
+</html>

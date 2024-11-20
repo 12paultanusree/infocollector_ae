@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice Submission</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+  <h2>Invoice Submission Form</h2>
+  <form th:action="@{/submitInvoice}" method="post" enctype="multipart/form-data">
+    <!-- Invoice Date -->
+    <div class="mb-3">
+      <label for="invoiceDate" class="form-label">Invoice Date</label>
+      <input type="date" class="form-control" id="invoiceDate" name="invoiceDate" required>
+    </div>
+
+    <!-- Invoice Amount -->
+    <div class="mb-3">
+      <label for="invoiceAmount" class="form-label">Invoice Amount</label>
+      <input type="number" class="form-control" id="invoiceAmount" name="invoiceAmount" required step="0.01">
+    </div>
+
+    <!-- Invoice Number -->
+    <div class="mb-3">
+      <label for="invoiceNumber" class="form-label">Invoice Number</label>
+      <input type="text" class="form-control" id="invoiceNumber" name="invoiceNumber" required>
+    </div>
+
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label for="invoiceDescription" class="form-label">Description</label>
+      <textarea class="form-control" id="invoiceDescription" name="invoiceDescription" rows="4"></textarea>
+    </div>
+
+    <!-- File Upload (Invoice Document) -->
+    <div class="mb-3">
+      <label for="invoicereceipt" class="form-label">Upload Invoice (PDF/Excel/Image)</label>
+      <input type="file" class="form-control" id="invoicereceipt" name="invoicereceipt" accept="image/*, application/pdf, .xlsx, .xls" required>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Submit Invoice</button>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

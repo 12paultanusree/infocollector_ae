@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar .logo span {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .navbar .logout a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        .content {
+            text-align: center;
+            margin: 50px auto;
+            max-width: 800px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .content h1 {
+            color: #007bff;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .content .form-link {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .content .form-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo">
+        <img src="/Images/logo.png" alt="Logo"> <!-- Replace with your logo path -->
+        <span>Information Collector</span>
+    </div>
+    <div class="logout">
+        <a th:href="@{/login}">Logout</a>
+    </div>
+</div>
+
+<!-- Main Content -->
+<!-- Main Content -->
+<div class="content">
+    <h1>Welcome to Avirant Enterprises</h1>
+    <p>
+        Avirant Enterprises is dedicated to providing innovative solutions and reliable services.
+        We aim to make data collection and management seamless and efficient for all our users.
+    </p>
+    <p>
+        Please take a moment to fill out the form assigned to you by clicking the link below.
+    </p>
+    <a class="form-link" th:href="@{/user/form}">Fill Out the Form</a>
+
+    <hr style="margin: 30px 0;">
+
+    <!-- Display Assigned Forms -->
+    <h2>Your Assigned Forms</h2>
+    <ul>
+        <li th:each="assignment : ${assignments}">
+            <a th:href="@{/form/view/{id}(id=${assignment.form.id})}"
+               th:text="${assignment.form.name}"></a>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

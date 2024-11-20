@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Assigned Forms</title>
+</head>
+<body>
+<h1>Assigned Forms</h1>
+<ul>
+  <li th:each="assignment : ${assignments}">
+    <span th:text="${assignment.form.name}"></span>
+    <a th:href="@{/form/view/{id}(id=${assignment.form.id})}">View Form</a>
+  </li>
+</ul>
+</body>
+</html>

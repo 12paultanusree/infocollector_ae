@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Asset Registration Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center">Asset Registration Form</h2>
+    <form th:action="@{/submitAsset}" method="post" enctype="multipart/form-data">
+
+        <!-- Asset Name -->
+        <div class="mb-3">
+            <label for="assetName" class="form-label">Asset Name</label>
+            <input type="text" class="form-control" id="assetName" name="assetName" required>
+        </div>
+
+        <!-- Asset ID -->
+        <div class="mb-3">
+            <label for="assetId" class="form-label">Asset ID</label>
+            <input type="text" class="form-control" id="assetId" name="assetId" required>
+        </div>
+
+        <!-- Asset Category -->
+        <div class="mb-3">
+            <label for="category" class="form-label">Asset Category</label>
+            <input type="text" class="form-control" id="category" name="category" required>
+        </div>
+
+        <!-- Asset Description -->
+        <div class="mb-3">
+            <label for="description" class="form-label">Asset Description</label>
+            <textarea class="form-control" id="description" name="description" rows="5"
+                      placeholder="Provide a detailed description of the asset" required></textarea>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="document" class="form-label">Upload Asset(Pdf/Image/Excel) </label>
+            <input type="file" class="form-control" id="document" name="document" accept="image/*, application/pdf, .xlsx, .xls">
+        </div>
+
+
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Register Asset</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

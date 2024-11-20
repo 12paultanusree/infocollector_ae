@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Expense</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+  <h2 class="text-center">Update Expense</h2>
+  <form th:action="@{/updateInvoice}" method="post" enctype="multipart/form-data">
+    <input type="hidden" th:value="${invoice.id}" name="id"/>
+
+    <!-- Expense Date -->
+    <div class="mb-3">
+      <label for="invoiceDate" class="form-label">Invoice Date</label>
+      <input type="date" class="form-control" id="invoiceDate" name="invoiceDate" th:value="${invoice.invoiceDate}" required>
+    </div>
+
+    <!-- Amount -->
+    <div class="mb-3">
+      <label for="invoiceAmount" class="form-label">Invoice Amount</label>
+      <input type="number" class="form-control" id="invoiceAmount" name="invoiceAmount" th:value="${invoice.invoiceAmount}" required>
+    </div>
+
+    <!-- Category -->
+    <div class="mb-3">
+      <label for="invoiceNumber" class="form-label">Category</label>
+      <input type="text" class="form-control" id="invoiceNumber" name="invoiceNumber" th:value="${invoice.invoiceNumber}" required>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label for="invoiceDescription" class="form-label">Description</label>
+      <textarea class="form-control" id="invoiceDescription" name="invoiceDescription" required th:text="${invoice.invoiceDescription}"></textarea>
+    </div>
+
+    <!-- Receipt (optional) -->
+    <div class="mb-3">
+      <label for="invoicereceipt" class="form-label">Receipt (Optional)</label>
+      <input type="file" class="form-control" id="invoicereceipt" name="invoicereceipt" accept="image/*">
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Invoice</button>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Performance Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .star-rating {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+    }
+    .star-rating input {
+      display: none;
+    }
+    .star-rating label {
+      font-size: 2rem;
+      color: gray;
+      cursor: pointer;
+    }
+    .star-rating input:checked ~ label {
+      color: gold;
+    }
+    .star-rating label:hover,
+    .star-rating label:hover ~ label {
+      color: gold;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2 class="text-center">Employee Performance Form</h2>
+  <form th:action="@{/submitEmployee}" method="post" enctype="multipart/form-data">
+
+    <!-- Employee Name -->
+    <div class="mb-3">
+      <label for="employeeName" class="form-label">Employee Name</label>
+      <input type="text" class="form-control" id="employeeName" name="employeeName" required>
+    </div>
+
+    <!-- Employee ID -->
+    <div class="mb-3">
+      <label for="employeeId" class="form-label">Employee ID</label>
+      <input type="text" class="form-control" id="employeeId" name="employeeId" required>
+    </div>
+
+    <!-- Department -->
+    <div class="mb-3">
+      <label for="department" class="form-label">Department</label>
+      <input type="text" class="form-control" id="department" name="department" required>
+    </div>
+
+    <!-- Performance Metrics -->
+    <div class="mb-3">
+      <label for="performanceMetrics" class="form-label">Performance Metrics</label>
+      <textarea class="form-control" id="performanceMetrics" name="performanceMetrics" rows="5"
+                placeholder="List performance metrics or achievements" required></textarea>
+    </div>
+
+    <!-- Performance Rating -->
+    <div class="mb-3 text-center">
+      <label for="performanceRating" class="form-label d-block">Performance Rating</label>
+      <div class="star-rating" id="performanceRating">
+        <input type="radio" id="performanceRating5" name="performanceRating" value="5" required>
+        <label for="performanceRating5" title="5 stars">&#9733;</label>
+        <input type="radio" id="performanceRating4" name="performanceRating" value="4">
+        <label for="performanceRating4" title="4 stars">&#9733;</label>
+        <input type="radio" id="performanceRating3" name="performanceRating" value="3">
+        <label for="performanceRating3" title="3 stars">&#9733;</label>
+        <input type="radio" id="performanceRating2" name="performanceRating" value="2">
+        <label for="performanceRating2" title="2 stars">&#9733;</label>
+        <input type="radio" id="performanceRating1" name="performanceRating" value="1">
+        <label for="performanceRating1" title="1 star">&#9733;</label>
+      </div>
+    </div>
+
+    <!-- Supporting Document Upload -->
+    <div class="mb-3">
+      <label for="docpath" class="form-label">Upload Supporting Documents (PDF/Excel/Image)</label>
+      <input type="file" class="form-control" id="docpath" name="docpath" accept="image/*, application/pdf, .xlsx, .xls" required>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Submit Performance Record</button>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

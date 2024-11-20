@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Tax Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+  <h2 class="text-center">Tax Form</h2>
+  <form th:action="@{/submitTax}" method="post" enctype="multipart/form-data">
+    <!-- Tax Year Field -->
+    <div class="mb-3">
+      <label for="taxYear" class="form-label">Tax Year</label>
+      <input type="date" class="form-control" id="taxYear" name="taxYear" required>
+    </div>
+
+    <!-- Taxpayer Name -->
+    <div class="mb-3">
+      <label for="taxpayerName" class="form-label">Taxpayer Name</label>
+      <input type="text" class="form-control" id="taxpayerName" name="taxpayerName" required>
+    </div>
+
+    <!-- Income Field -->
+    <div class="mb-3">
+      <label for="income" class="form-label">Income</label>
+      <input type="number" class="form-control" id="income" name="income" step="0.01" required>
+    </div>
+
+    <!-- Tax Paid -->
+    <div class="mb-3">
+      <label for="taxPaid" class="form-label">Tax Paid</label>
+      <input type="number" class="form-control" id="taxPaid" name="taxPaid" step="0.01" required>
+    </div>
+
+    <!-- Tax Filing Status -->
+    <div class="mb-3">
+      <label for="filingStatus" class="form-label">Filing Status</label>
+      <select class="form-select" id="filingStatus" name="filingStatus" required>
+        <option value="">Select Filing Status</option>
+        <option value="Single">Single</option>
+        <option value="Married">Married</option>
+        <option value="Head of Household">Head of Household</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <!-- Tax Document Upload -->
+    <div class="mb-3">
+      <label for="taxreceipt" class="form-label">Upload Tax Document (PDF/Excel/Image)</label>
+      <input type="file" class="form-control" id="taxreceipt" name="taxreceipt" accept="image/*, application/pdf, .xlsx, .xls" required>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Submit Tax Form</button>
+  </form>
+</div>
+
+<!-- Optional: Add Bootstrap JS (for interactive components) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

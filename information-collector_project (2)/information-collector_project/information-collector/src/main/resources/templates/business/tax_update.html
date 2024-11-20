@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Tax</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+  <h2 class="text-center">Update Tax</h2>
+  <form th:action="@{/updateTax}" method="post" enctype="multipart/form-data">
+    <input type="hidden" th:value="${tax.id}" name="id"/>
+
+    <!-- Expense Date -->
+    <div class="mb-3">
+      <label for="taxYear" class="form-label">Tax Year</label>
+      <input type="date" class="form-control" id="taxYear" name="taxYear" th:value="${tax.taxYear}" required>
+    </div>
+
+    <!-- Amount -->
+    <div class="mb-3">
+      <label for="taxpayerName" class="form-label">Tax Payer Name</label>
+      <input type="text" class="form-control" id="taxpayerName" name="taxpayerName" th:value="${tax.taxpayerName}" required>
+    </div>
+
+    <!-- Category -->
+    <div class="mb-3">
+      <label for="income" class="form-label">Tax Amount</label>
+      <input type="number" class="form-control" id="income" name="income" th:value="${tax.income}" required>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label for="taxPaid" class="form-label">Tax Paid</label>
+      <input type="number" class="form-control" id="taxPaid" name="taxPaid" required th:text="${tax.taxPaid}"></input>
+    </div>
+
+    <div class="mb-3">
+      <label for="filingStatus" class="form-label">Filing Status</label>
+      <textarea class="form-control" id="filingStatus" name="filingStatus" required th:text="${tax.filingStatus}"></textarea>
+    </div>
+
+    <!-- Receipt (optional) -->
+    <div class="mb-3">
+      <label for="taxreceipt" class="form-label">Receipt (Optional)</label>
+      <input type="file" class="form-control" id="taxreceipt" name="taxreceipt" accept="application/pdf, application/vnd.ms-excel">
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Tax</button>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Dashboard</title>
+    <!-- Link to CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa; /* Light background for the dashboard */
+        }
+
+        .navbar {
+            background-color: #007bff; /* Match the color of the login navbar */
+            height: 70px;
+            padding: 0 20px;
+        }
+
+        .navbar .navbar-brand {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .navbar .navbar-brand img {
+            max-height: 50px;
+            margin-right: 10px;
+        }
+
+        .navbar .btn-logout {
+            background-color: #fff;
+            color: #007bff;
+            font-weight: bold;
+            border: none;
+            padding: 5px 15px;
+        }
+
+        .sidebar {
+            height: 100vh;
+            padding-top: 20px;
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <!-- Logo and Title -->
+        <a class="navbar-brand" href="#">
+            <img src="/Images/logo.png" alt="Logo">
+            Information Collector
+        </a>
+        <!-- Logout Button -->
+        <button class="btn btn-logout ms-auto"><a th:href="@{/login}">Logout</a></button>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3 col-lg-2 sidebar">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/business_dashboard">Business and Financial Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/personal_dashboard">Personal Information</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/project_dashboard">Project and Task</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/education_dashboard">Educational Data</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-9 col-lg-10">
+            <div class="container py-4">
+                <h1 class="text-primary">Main Dashboard</h1>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Business and Financial</h5>
+                                <a href="/business_dashboard" class="btn btn-primary">Go to Dashboard</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Personal Information</h5>
+                                <a href="/personal_dashboard" class="btn btn-primary">Go to Dashboard</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Project and Task</h5>
+                                <a href="/project_dashboard" class="btn btn-primary">Go to Dashboard</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Educational Data</h5>
+                                <a href="/education_dashboard" class="btn btn-primary">Go to Dashboard</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

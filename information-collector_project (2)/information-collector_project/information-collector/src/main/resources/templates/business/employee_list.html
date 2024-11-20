@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center">Employee List</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Employee Name</th>
+            <th>Employee Id</th>
+            <th>Department</th>
+            <th>performanceMetrics</th>
+            <th>PerformanceRating</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee : ${employees}">
+            <td th:text="${employee.employeeName}"></td>
+            <td th:text="${employee.employeeId}"></td>
+            <td th:text="${employee.department}"></td>
+            <td th:text="${employee.performanceMetrics}"></td>
+            <td th:text="${employee.performanceRating}"></td>
+            <td>
+                <a th:href="@{/employee/{id}(id=${employee.id})}" class="btn btn-primary">View</a>
+                <a th:href="@{/employee/delete/{id}(id=${employee.id})}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

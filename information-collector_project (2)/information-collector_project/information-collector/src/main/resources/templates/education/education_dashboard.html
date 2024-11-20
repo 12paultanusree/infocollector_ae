@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #007bff;">
+  <div class="container-fluid">
+    <!-- Logo on the left side of the navbar -->
+    <a class="navbar-brand" href="#">
+      <img th:src="@{logo.png}" alt="Logo">
+      <!-- Replace with your logo path -->
+      Information Collector
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+  </div>
+</nav>
+
+<!-- Main Content with Sidebar and Content Area -->
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3 col-lg-2 sidebar">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Personal Information Collection</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"> Business and Financial Data Collection</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"> Project and Task Management</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Educational and Training Data Collection</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="col-md-9 col-lg-10">
+      <div class="container py-4">
+        <h1>Educational and Training Data Collection </h1>
+        <hr>
+
+        <!-- Responsive Cards -->
+        <div class="row">
+          <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Course Enrollment Form</h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary">Details</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Assignment Submission Form</h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary">Details</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Training Feedback Form</h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary">Details</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Event Registration Form</h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary">Details</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Certification Upload Form</h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary">Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JavaScript Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

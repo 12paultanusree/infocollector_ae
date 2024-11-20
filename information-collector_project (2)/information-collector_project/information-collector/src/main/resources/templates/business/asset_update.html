@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Expense</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+  <h2 class="text-center">Update Asset</h2>
+  <form th:action="@{/updateAsset}" method="post" enctype="multipart/form-data">
+    <input type="hidden" th:value="${asset.id}" name="id"/>
+
+    <!-- Expense Date -->
+    <div class="mb-3">
+      <label for="assetName" class="form-label">Asset Name</label>
+      <input type="text" class="form-control" id="assetName" name="assetName" th:value="${asset.assetName}" required>
+    </div>
+
+    <!-- Amount -->
+    <div class="mb-3">
+      <label for="assetId" class="form-label">Asset Id</label>
+      <input type="text" class="form-control" id="assetId" name="assetId" th:value="${asset.assetId}" required>
+    </div>
+
+    <!-- Category -->
+    <div class="mb-3">
+      <label for="category" class="form-label">Category</label>
+      <input type="text" class="form-control" id="category" name="category" th:value="${asset.category}" required>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" id="description" name="description" required th:text="${asset.description}"></textarea>
+    </div>
+
+
+    <!-- Receipt (optional) -->
+    <div class="mb-3">
+      <label for="document" class="form-label">Document</label>
+      <input type="file" class="form-control" id="document" name="document" accept="image/*,application/pdf,.xlsx,.xls">
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Details</button>
+  </form>
+</div>
+</body>
+</html>
