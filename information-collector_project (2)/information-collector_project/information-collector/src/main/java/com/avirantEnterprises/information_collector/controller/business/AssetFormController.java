@@ -33,7 +33,7 @@ public class AssetFormController {
     @GetMapping("/asset/delete/{id}")
     public String deleteAsset(@PathVariable Long id) {
         assetService.deleteAssetById(id);
-        return "business/success"; // Redirect to a list of expenses after deletion
+        return "redirect:/asset_list"; // Redirect to a list of expenses after deletion
     }
 
     // List all expenses
@@ -78,6 +78,6 @@ public class AssetFormController {
                               @RequestParam("description") String description,
                               @RequestParam("document") MultipartFile document) {
         assetService.saveAsset(assetName, assetId, category, description, document);
-        return "redirect:/asset_list"; // Redirect to the list of expenses after submission
+        return "business/success"; // Redirect to the list of expenses after submission
     }
 }

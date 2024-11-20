@@ -68,20 +68,56 @@
             line-height: 1.6;
         }
 
-        .content .form-link {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 1em;
-            color: white;
-            background-color: #007bff;
-            text-decoration: none;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease;
+        /* Assigned Forms Section */
+        .assigned-forms {
+            text-align: left;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f9f9ff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .content .form-link:hover {
-            background-color: #0056b3;
+        .assigned-forms h2 {
+            color: #333;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        .assigned-forms ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .assigned-forms ul li {
+            margin-bottom: 15px;
+        }
+
+        .assigned-forms ul li a {
+            text-decoration: none;
+            font-size: 1.2em;
+            color: #007bff;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .assigned-forms ul li a:hover {
+            color: #0056b3;
+        }
+
+        .assigned-forms ul li .description {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .assigned-forms ul li:hover {
+            background-color: #eef7ff;
+            padding: 10px;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -89,7 +125,7 @@
 <!-- Navbar -->
 <div class="navbar">
     <div class="logo">
-        <img src="/Images/logo.png" alt="Logo"> <!-- Replace with your logo path -->
+        <img src="/Images/iclogo.png" alt="Logo"> <!-- Replace with your logo path -->
         <span>Information Collector</span>
     </div>
     <div class="logout">
@@ -98,28 +134,24 @@
 </div>
 
 <!-- Main Content -->
-<!-- Main Content -->
 <div class="content">
     <h1>Welcome to Avirant Enterprises</h1>
     <p>
         Avirant Enterprises is dedicated to providing innovative solutions and reliable services.
         We aim to make data collection and management seamless and efficient for all our users.
     </p>
-    <p>
-        Please take a moment to fill out the form assigned to you by clicking the link below.
-    </p>
-    <a class="form-link" th:href="@{/user/form}">Fill Out the Form</a>
 
-    <hr style="margin: 30px 0;">
-
-    <!-- Display Assigned Forms -->
-    <h2>Your Assigned Forms</h2>
-    <ul>
-        <li th:each="assignment : ${assignments}">
-            <a th:href="@{/form/view/{id}(id=${assignment.form.id})}"
-               th:text="${assignment.form.name}"></a>
-        </li>
-    </ul>
+    <!-- Assigned Forms Section -->
+    <div class="assigned-forms">
+        <h2>Your Assigned Forms</h2>
+        <ul>
+            <li th:each="assignment : ${assignments}">
+                <a th:href="@{/form/view/{id}(id=${assignment.form.id})}"
+                   th:text="${assignment.form.name}"></a>
+                <div class="description" th:text="'Description: ' + ${assignment.form.description}"></div>
+            </li>
+        </ul>
+    </div>
 </div>
 
 </body>

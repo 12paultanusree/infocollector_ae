@@ -33,7 +33,7 @@ public class EmployeeFormController {
     @GetMapping("/employee/delete/{id}")
     public String deleteEmployee(@PathVariable Long id) {
         employeeService.deleteEmployeeById(id);
-        return "business/success"; // Redirect to a list of expenses after deletion
+        return "redirect:/employee_list"; // Redirect to a list of expenses after deletion
     }
 
     // List all expenses
@@ -80,6 +80,6 @@ public class EmployeeFormController {
                                  @RequestParam("performanceRating") String performanceRating,
                                 @RequestParam("docpath") MultipartFile docpath) {
         employeeService.saveEmployee(employeeName, employeeId, department, performanceMetrics,performanceRating, docpath);
-        return "redirect:/employee_list"; // Redirect to the list of expenses after submission
+        return "business/success"; // Redirect to the list of expenses after submission
     }
 }
