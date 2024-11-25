@@ -10,7 +10,7 @@ public class FormController {
 
     @GetMapping("/form/view/{id}")
     public String viewForm(@PathVariable Long id, RedirectAttributes redirectAttributes) {
-        // Redirect to the appropriate form based on form ID
+
         if (id == 1) {
             return "redirect:/expense_report"; // Redirect to the Expense Report form
         } else if (id == 2) {

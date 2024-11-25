@@ -32,7 +32,6 @@ public class AdminController {
 
         Form form = formRepository.findById(formId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid form ID"));
-
         Assignment assignment = new Assignment();
         assignment.setUser(user);
         assignment.setForm(form);

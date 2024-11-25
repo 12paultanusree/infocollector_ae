@@ -26,9 +26,6 @@ public class AssignmentService {
         assignment.setAssignedAt(java.time.LocalDateTime.now()); // Ensure assignedAt is set
         return assignmentRepository.save(assignment);
     }
-
-
-
     // Fetch all assignments for a user
     public List<Assignment> getAssignmentsByUser(Profile user) {
         return assignmentRepository.findByUser(user);

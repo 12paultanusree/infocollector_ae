@@ -13,23 +13,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class SignupController {
 
     @Autowired
-    private ProfileRepository profileRepository; // User repository
+    private ProfileRepository profileRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder; // For encoding passwords
 
     @GetMapping("/signup")
     public String showSignupForm(Model model) {
-        model.addAttribute("profile", new Profile()); // Bind form to Profile entity
+        model.addAttribute("profile", new Profile());
         return "signup"; // Thymeleaf signup form
     }
 
     @PostMapping("/signup")
-    public String processSignup(Profile profile) {
-        // Encode the user's password before saving
+    public String processSignup(Profile profile, Model model) {
+        // Check if the username is already taken
+        if (profileRepository.findByUsername(profile.getUsername()).isPresent()) {
+            model.addAttribute("error", "Username is already taken. Please choose another one.");
+            return "signup"; // Return back to the signup page with an error
+        }
+
+        // Optional: Add additional validations here (e.g., email format, password strength)
+
+        // Encode the password before saving
         profile.setPassword(passwordEncoder.encode(profile.getPassword()));
-        profile.setRole("USER"); // Assign default role as USER
-        profileRepository.save(profile); // Save user to the database
-        return "redirect:/login"; // Redirect to login after successful signup
+
+        // Assign default role as USER
+        profile.setRole("USER");
+
+        // Save the profile
+        profileRepository.save(profile);
+
+        // Redirect to the login page with a success message
+        model.addAttribute("success", "Account created successfully. Please log in.");
+        return "redirect:/login";
     }
 }
