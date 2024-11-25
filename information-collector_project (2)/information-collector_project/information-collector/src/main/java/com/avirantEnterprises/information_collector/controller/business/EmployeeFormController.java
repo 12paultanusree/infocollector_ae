@@ -21,38 +21,38 @@ public class EmployeeFormController {
     @Autowired
     private EmployeeService employeeService;
 
-    // View specific expense details
+
     @GetMapping("/employee/{id}")
     public String viewEmployee(@PathVariable Long id, Model model) {
         Employee employee = employeeService.getEmployeeById(id);
         model.addAttribute("employee", employee);
-        return "business/employee_view"; // View template for displaying the specific expense
+        return "business/employee_view";
     }
 
-    // Delete specific expense by id
+
     @GetMapping("/employee/delete/{id}")
     public String deleteEmployee(@PathVariable Long id) {
         employeeService.deleteEmployeeById(id);
-        return "redirect:/employee_list"; // Redirect to a list of expenses after deletion
+        return "redirect:/employee_list";
     }
 
-    // List all expenses
+
     @GetMapping("/employee_list")
     public String listEmployee(Model model) {
         List<Employee> employees = employeeService.getAllEmployees();
         model.addAttribute("employees", employees);
-        return "business/employee_list"; // Template that lists all expenses
+        return "business/employee_list";
     }
 
-    // Show the form to update an existing expense
+
     @GetMapping("/employee/update/{id}")
     public String showUpdateEmployeeForm(@PathVariable Long id, Model model) {
         Employee employee = employeeService.getEmployeeById(id);
         model.addAttribute("employee", employee);
-        return "business/employee_update"; // Template to show update form
+        return "business/employee_update";
     }
 
-    // Handle the submission of the expense update form
+
     @PostMapping("/updateEmployee")
     public String updateEmployee(@RequestParam("id") Long id,
                                 @RequestParam("employeeName") String employeeName,
@@ -62,16 +62,16 @@ public class EmployeeFormController {
                                  @RequestParam("performanceRating") String performanceRating,
                                 @RequestParam("docpath") MultipartFile docpath) {
         employeeService.updateEmployee(id, employeeName, employeeId, department, performanceMetrics, performanceRating,docpath);
-        return "redirect:/employee/" + id; // Redirect to the updated expense page
+        return "redirect:/employee/" + id;
     }
 
-    // Show the form to add a new expense
+
     @GetMapping("/employee/new")
     public String showEmployeeForm(Model model) {
-        return "business/employee_form"; // Template to show the form for creating a new expense
+        return "business/employee_form";
     }
 
-    // Handle the submission of the new expense form
+
     @PostMapping("/submitEmployee")
     public String submitEmployee(@RequestParam("employeeName") String employeeName,
                                 @RequestParam("employeeId") String employeeId,
@@ -80,6 +80,6 @@ public class EmployeeFormController {
                                  @RequestParam("performanceRating") String performanceRating,
                                 @RequestParam("docpath") MultipartFile docpath) {
         employeeService.saveEmployee(employeeName, employeeId, department, performanceMetrics,performanceRating, docpath);
-        return "business/success"; // Redirect to the list of expenses after submission
+        return "business/success";
     }
 }

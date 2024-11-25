@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Enrollment Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <h2 class="text-center">Course Enrollment Form</h2>
+  <form th:action="@{/submitCourse}" method="post" enctype="multipart/form-data">
+
+    <!-- Student Name -->
+    <div class="mb-3">
+      <label for="studentName" class="form-label">Student Name</label>
+      <input type="text" class="form-control" id="studentName" name="studentName" required>
+    </div>
+
+    <!-- Student ID -->
+    <div class="mb-3">
+      <label for="studentId" class="form-label">Student ID</label>
+      <input type="text" class="form-control" id="studentId" name="studentId" required>
+    </div>
+
+    <!-- Course Name -->
+    <div class="mb-3">
+      <label for="courseName" class="form-label">Course Name</label>
+      <input type="text" class="form-control" id="courseName" name="courseName" required>
+    </div>
+
+    <!-- Course Description -->
+    <div class="mb-3">
+      <label for="courseDescription" class="form-label">Course Description</label>
+      <textarea class="form-control" id="courseDescription" name="courseDescription" rows="5"
+                placeholder="Provide a brief description of the course" required></textarea>
+    </div>
+
+    <!-- Upload ID Document -->
+    <div class="mb-3">
+      <label for="idDocument" class="form-label">Upload ID Document (PDF/Image)</label>
+      <input type="file" class="form-control" id="idDocument" name="idDocument" accept="image/*, application/pdf,.xlsx" required>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Enroll</button>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

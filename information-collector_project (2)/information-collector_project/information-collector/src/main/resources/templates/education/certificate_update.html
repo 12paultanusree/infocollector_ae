@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Certificate</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center">Update Certificate</h2>
+    <form th:action="@{/updateCertificate}" method="post" enctype="multipart/form-data">
+        <input type="hidden" th:value="${certificate.id}" name="id"/>
+
+        <!-- Expense Date -->
+        <div class="mb-3">
+            <label for="userName" class="form-label">User Name</label>
+            <input type="text" class="form-control" id="userName" name="userName" th:value="${certificate.userName}" required>
+        </div>
+
+        <!-- Amount -->
+        <div class="mb-3">
+            <label for="userId" class="form-label">User Id</label>
+            <input type="text" class="form-control" id="userId" name="userId" th:value="${certificate.userId}" required>
+        </div>
+
+        <!-- Category -->
+        <div class="mb-3">
+            <label for="courseName" class="form-label">Course Name</label>
+            <input type="text" class="form-control" id="courseName" name="courseName" th:value="${certificate.courseName}" required>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+            <label for="certificationTitle" class="form-label">Certificate Title</label>
+            <textarea class="form-control" id="certificationTitle" name="certificationTitle" required th:text="${certificate.certificationTitle}"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="certificationDate" class="form-label">Certificate Date</label>
+            <textarea class="form-control" id="certificationDate" name="certificationDate" required th:text="${certificate.certificationDate}"></textarea>
+        </div>
+
+        <!-- Receipt (optional) -->
+        <div class="mb-3">
+            <label for="certificatePath" class="form-label">Upload Certificate</label>
+            <input type="file" class="form-control" id="certificatePath" name="certificatePath" accept="image/*,application/pdf">
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update Certificate</button>
+    </form>
+</div>
+</body>
+</html>

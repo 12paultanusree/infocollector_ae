@@ -22,7 +22,7 @@ public class TaxService {
 
     private final Path rootLocation = Paths.get("upload-business");
 
-    // Method to register a new expense
+
     public void saveTax(LocalDate taxYear, String taxpayerName, double income, double taxPaid,String filingStatus, MultipartFile taxreceipt) {
         Tax tax = new Tax();
         tax.setTaxYear(taxYear);
@@ -31,13 +31,13 @@ public class TaxService {
         tax.setTaxPaid(taxPaid);
         tax.setFilingStatus(filingStatus);
 
-        String taxDocument = saveFile(taxreceipt);  // Save the receipt file and get its path
+        String taxDocument = saveFile(taxreceipt);
         tax.setTaxDocument(taxDocument);
 
-        taxRepository.save(tax);  // Save the expense to the database
+        taxRepository.save(tax);
     }
 
-    // Method to update an existing expense
+
     public void updateTax(Long id, LocalDate taxYear, String taxpayerName, double income, double taxPaid,String filingStatus, MultipartFile taxreceipt) {
         Optional<Tax> optionalTax = taxRepository.findById(id);
         if (optionalTax.isPresent()) {
@@ -48,24 +48,24 @@ public class TaxService {
             tax.setTaxPaid(taxPaid);
             tax.setFilingStatus(filingStatus);
             if (!taxreceipt.isEmpty()) {
-                String receiptPath = saveFile(taxreceipt);  // Save the new receipt file if provided
+                String receiptPath = saveFile(taxreceipt);
                 tax.setTaxDocument(receiptPath);
             }
-            taxRepository.save(tax);  // Save the updated expense to the database
+            taxRepository.save(tax);
         }
     }
 
-    // Method to get an expense by its ID
+
     public Tax getTaxById(Long id) {
         return taxRepository.findById(id).orElse(null);
     }
 
-    // Method to get all expenses
+
     public List<Tax> getAllTaxes() {
         return taxRepository.findAll();
     }
 
-    // Method to delete an expense by its ID
+
     public void deleteTaxById(Long id) {
         taxRepository.deleteById(id);
     }

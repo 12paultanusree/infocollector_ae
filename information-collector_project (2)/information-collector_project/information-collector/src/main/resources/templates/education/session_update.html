@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Session</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center">Update Session</h2>
+    <form th:action="@{/updateSession}" method="post" enctype="multipart/form-data">
+        <input type="hidden" th:value="${session.id}" name="id"/>
+
+        <!-- Expense Date -->
+        <div class="mb-3">
+            <label for="name" class="form-label">Participant Name</label>
+            <input type="text" class="form-control" id="name" name="name" th:value="${session.name}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Participant Email</label>
+            <input type="text" class="form-control" id="email" name="email" th:value="${session.email}" required>
+        </div>
+
+        <!-- Amount -->
+        <div class="mb-3">
+            <label for="title" class="form-label">Session Title</label>
+            <input type="text" class="form-control" id="title" name="title" th:value="${session.title}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Training Date</label>
+            <input type="date" class="form-control" id="date" name="title" th:value="${session.date}" required>
+        </div>
+
+        <!-- Category -->
+        <div class="mb-3">
+            <label for="rating" class="form-label">Ratings</label>
+            <input type="text" class="form-control" id="rating" name="rating" th:value="${session.rating}" required>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+            <label for="comments" class="form-label">Comments</label>
+            <input type="text" class="form-control" id="comments" name="comments" required th:text="${session.comments}" required>
+        </div>
+
+        <!-- Receipt (optional) -->
+        <div class="mb-3">
+            <label for="sessionPath" class="form-label">Upload File</label>
+            <input type="file" class="form-control" id="sessionPath" name="sessionPath" accept="image/*,application/pdf">
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update Assignment</button>
+    </form>
+</div>
+</body>
+</html>

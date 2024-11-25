@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Proposal Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <h2 class="text-center">Project Proposal Form</h2>
+  <form th:action="@{/submitProposal}" method="post" enctype="multipart/form-data">
+
+    <!-- Full Name -->
+    <div class="mb-3">
+      <label for="fullName" class="form-label">Full Name</label>
+      <input type="text" class="form-control" id="fullName" name="fullName" required>
+    </div>
+
+    <!-- Email Address -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Email Address</label>
+      <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+
+    <!-- Project Title -->
+    <div class="mb-3">
+      <label for="projectTitle" class="form-label">Project Title</label>
+      <input type="text" class="form-control" id="projectTitle" name="projectTitle" required>
+    </div>
+
+    <!-- Project Description -->
+    <div class="mb-3">
+      <label for="projectDescription" class="form-label">Project Description</label>
+      <textarea class="form-control" id="projectDescription" name="projectDescription" rows="5"
+                placeholder="Provide a detailed description of your project" required></textarea>
+    </div>
+
+    <!-- Upload Proposal Document -->
+    <div class="mb-3">
+      <label for="proposalDocument" class="form-label">Upload Proposal Document (Word/PDF)</label>
+      <input type="file" class="form-control" id="proposalDocument" name="proposalDocument"
+             accept=".doc,.docx,application/pdf" required>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Submit Proposal</button>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

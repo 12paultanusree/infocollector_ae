@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Course</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center">Update Course</h2>
+    <form th:action="@{/updateCourse}" method="post" enctype="multipart/form-data">
+        <input type="hidden" th:value="${course.id}" name="id"/>
+
+        <!-- Expense Date -->
+        <div class="mb-3">
+            <label for="studentName" class="form-label">Student Name</label>
+            <input type="text" class="form-control" id="studentName" name="studentName" th:value="${course.studentName}" required>
+        </div>
+
+        <!-- Amount -->
+        <div class="mb-3">
+            <label for="studentId" class="form-label">Student Id</label>
+            <input type="text" class="form-control" id="studentId" name="studentId" th:value="${course.studentId}" required>
+        </div>
+
+        <!-- Category -->
+        <div class="mb-3">
+            <label for="courseName" class="form-label">Course Name</label>
+            <input type="text" class="form-control" id="courseName" name="courseName" th:value="${course.courseName}" required>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+            <label for="courseDescription" class="form-label">Description</label>
+            <textarea class="form-control" id="courseDescription" name="courseDescription" required th:text="${course.courseDescription}"></textarea>
+        </div>
+
+        <!-- Receipt (optional) -->
+        <div class="mb-3">
+            <label for="idPath" class="form-label">Upload ID</label>
+            <input type="file" class="form-control" id="idPath" name="idPath" accept="image/*">
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update Course</button>
+    </form>
+</div>
+</body>
+</html>

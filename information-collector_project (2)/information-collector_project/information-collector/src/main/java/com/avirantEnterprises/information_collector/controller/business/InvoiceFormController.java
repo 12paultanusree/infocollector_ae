@@ -21,38 +21,38 @@ public class InvoiceFormController {
     @Autowired
     private InvoiceService invoiceService;
 
-    // View specific expense details
+
     @GetMapping("/invoice/{id}")
     public String viewInvoice(@PathVariable Long id, Model model) {
         Invoice invoice = invoiceService.getInvoiceById(id);
         model.addAttribute("invoice", invoice);
-        return "business/invoice_view"; // View template for displaying the specific expense
+        return "business/invoice_view";
     }
 
-    // Delete specific expense by id
+
     @GetMapping("/invoice/delete/{id}")
     public String deleteInvoice(@PathVariable Long id) {
         invoiceService.deleteInvoiceById(id);
-        return "redirect:/invoice_list"; // Redirect to a list of expenses after deletion
+        return "redirect:/invoice_list";
     }
 
-    // List all expenses
+
     @GetMapping("/invoice_list")
     public String listInvoices(Model model) {
         List<Invoice> invoices = invoiceService.getAllInvoices();
         model.addAttribute("invoices", invoices);
-        return "business/invoice_list"; // Template that lists all expenses
+        return "business/invoice_list";
     }
 
-    // Show the form to update an existing expense
+
     @GetMapping("/invoice/update/{id}")
     public String showUpdateInvoiceForm(@PathVariable Long id, Model model) {
         Invoice invoice = invoiceService.getInvoiceById(id);
         model.addAttribute("invoice", invoice);
-        return "business/invoice_update"; // Template to show update form
+        return "business/invoice_update";
     }
 
-    // Handle the submission of the expense update form
+
     @PostMapping("/updateInvoice")
     public String updateInvoice(@RequestParam("id") Long id,
                                 @RequestParam("invoiceDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate invoiceDate,
@@ -61,16 +61,16 @@ public class InvoiceFormController {
                                 @RequestParam("invoiceDescription") String invoiceDescription,
                                 @RequestParam("invoicereceipt") MultipartFile invoicereceipt) {
         invoiceService.updateInvoice(id, invoiceDate, invoiceAmount, invoiceNumber, invoiceDescription, invoicereceipt);
-        return "redirect:/invoice/" + id; // Redirect to the updated expense page
+        return "redirect:/invoice/" + id;
     }
 
-    // Show the form to add a new expense
+
     @GetMapping("/invoice/new")
     public String showInvoiceForm(Model model) {
-        return "business/invoice_form"; // Template to show the form for creating a new expense
+        return "business/invoice_form";
     }
 
-    // Handle the submission of the new expense form
+
     @PostMapping("/submitInvoice")
     public String submitInvoice(@RequestParam("invoiceDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate invoiceDate,
                                 @RequestParam("invoiceAmount") double invoiceAmount,
@@ -78,6 +78,6 @@ public class InvoiceFormController {
                                 @RequestParam("invoiceDescription") String invoiceDescription,
                                 @RequestParam("invoicereceipt") MultipartFile invoicereceipt) {
         invoiceService.saveInvoice(invoiceDate, invoiceAmount, invoiceNumber, invoiceDescription, invoicereceipt);
-        return "business/success"; // Redirect to the list of expenses after submission
+        return "business/success";
     }
 }

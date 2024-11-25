@@ -29,6 +29,15 @@ public class DashboardController {
         return "Login"; // Refers to login.html
     }
 
+    // User Dashboard
+    @GetMapping("/user_dashboard")
+    public String userDashboard(Model model) {
+        model.addAttribute("dashboardTitle", "User Dashboard");
+        return "/user_dashboard"; // Ensure this corresponds to user_dashboard.html
+    }
+
+
+
     @GetMapping("/user/signup")
     public String signupPage() {
         return "signup"; // Refers to signup.html

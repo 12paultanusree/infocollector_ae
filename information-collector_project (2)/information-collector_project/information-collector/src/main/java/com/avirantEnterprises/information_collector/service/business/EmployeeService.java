@@ -21,7 +21,7 @@ public class EmployeeService {
 
     private final Path rootLocation = Paths.get("upload-business");
 
-    // Method to register a new expense
+
     public void saveEmployee(String employeeName, String employeeId, String department, String performanceMetrics, String performanceRating,MultipartFile docpath) {
         Employee employee = new Employee();
         employee.setEmployeeName(employeeName);
@@ -30,13 +30,13 @@ public class EmployeeService {
         employee.setPerformanceMetrics(performanceMetrics);
         employee.setPerformanceRating(performanceRating);
 
-        String document = saveFile(docpath);  // Save the receipt file and get its path
+        String document = saveFile(docpath);
         employee.setDocument(document);
 
-        employeeRepository.save(employee);  // Save the expense to the database
+        employeeRepository.save(employee);
     }
 
-    // Method to update an existing expense
+
     public void updateEmployee(Long id, String employeeName, String employeeId, String department, String performanceMetrics, String performanceRating, MultipartFile docpath) {
         Optional<Employee> optionalEmployee = employeeRepository.findById(id);
         if (optionalEmployee.isPresent()) {
@@ -47,29 +47,29 @@ public class EmployeeService {
             employee.setPerformanceMetrics(performanceMetrics);
             employee.setPerformanceRating(performanceRating);
             if (!docpath.isEmpty()) {
-                String document = saveFile(docpath);  // Save the new receipt file if provided
+                String document = saveFile(docpath);
                 employee.setDocument(document);
             }
-            employeeRepository.save(employee);  // Save the updated expense to the database
+            employeeRepository.save(employee);
         }
     }
 
-    // Method to get an expense by its ID
+
     public Employee getEmployeeById(Long id) {
         return employeeRepository.findById(id).orElse(null);
     }
 
-    // Method to get all expenses
+
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
     }
 
-    // Method to delete an expense by its ID
+
     public void deleteEmployeeById(Long id) {
         employeeRepository.deleteById(id);
     }
 
-    // Helper method to sanitize the file name before saving
+
     private String sanitizeFileName(String fileName) {
         return fileName.replaceAll("[^a-zA-Z0-9\\.\\-]", "_");  // Sanitize the file name
     }

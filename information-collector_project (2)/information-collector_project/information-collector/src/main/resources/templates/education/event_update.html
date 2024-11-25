@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Event</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+  <h2 class="text-center">Update Event</h2>
+  <form th:action="@{/updateEvent}" method="post" enctype="multipart/form-data">
+    <input type="hidden" th:value="${event.id}" name="id"/>
+
+    <!-- Expense Date -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Participant Name</label>
+      <input type="text" class="form-control" id="name" name="name" th:value="${event.name}" required>
+    </div>
+
+    <!-- Amount -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Participant Email</label>
+      <input type="text" class="form-control" id="email" name="email" th:value="${event.email}" required>
+    </div>
+
+    <!-- Category -->
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone Number</label>
+      <input type="text" class="form-control" id="phone" name="phone" th:value="${event.phone}" required>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label for="eventName" class="form-label">Event Name</label>
+      <input type="text" class="form-control" id="eventName" name="eventName" required th:text="${event.eventName}" required>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label for="eventDate" class="form-label">Event Date</label>
+      <input type="date" class="form-control" id="eventDate" name="eventDate" required th:text="${event.eventDate}" required>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label for="notes" class="form-label">Additional Notes</label>
+      <input type="text" class="form-control" id="notes" name="notes" required th:text="${event.notes}" required>
+    </div>
+
+    <!-- Receipt (optional) -->
+    <div class="mb-3">
+      <label for="eventPath" class="form-label">Upload File</label>
+      <input type="file" class="form-control" id="eventPath" name="eventPath" accept="image/*,application/pdf">
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Event</button>
+  </form>
+</div>
+</body>
+</html>

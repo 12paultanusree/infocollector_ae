@@ -25,13 +25,13 @@
     <!-- Income Field -->
     <div class="mb-3">
       <label for="income" class="form-label">Income</label>
-      <input type="number" class="form-control" id="income" name="income" step="0.01" required>
+      <input type="number" class="form-control" id="income" name="income" step="0.01" required oninput="calculateTax()">
     </div>
 
     <!-- Tax Paid -->
     <div class="mb-3">
       <label for="taxPaid" class="form-label">Tax Paid</label>
-      <input type="number" class="form-control" id="taxPaid" name="taxPaid" step="0.01" required>
+      <input type="number" class="form-control" id="taxPaid" name="taxPaid" step="0.01" readonly>
     </div>
 
     <!-- Tax Filing Status -->
@@ -56,6 +56,26 @@
     <button type="submit" class="btn btn-primary">Submit Tax Form</button>
   </form>
 </div>
+
+<script>
+  function calculateTax() {
+    const income = parseFloat(document.getElementById('income').value) || 0;
+    let taxPaid = 0;
+
+    if (income <= 250000) {
+        taxPaid = 0;
+    } else if (income <= 500000) {
+        taxPaid = (income - 250000) * 0.05;
+    } else if (income <= 1000000) {
+        taxPaid = 12500 + (income - 500000) * 0.20;
+    } else {
+        taxPaid = 112500 + (income - 1000000) * 0.30;
+    }
+
+    document.getElementById('taxPaid').value = taxPaid.toFixed(2);
+}
+
+</script>
 
 <!-- Optional: Add Bootstrap JS (for interactive components) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

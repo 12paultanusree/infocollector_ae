@@ -18,12 +18,12 @@ public class PdfController {
     @Autowired
     private PdfService pdfService;
 
-    @GetMapping("/profile/download/{id}")
-    public ResponseEntity<byte[]> downloadUserProfilePdf(@PathVariable Long id) throws IOException, DocumentException {
-        byte[] pdfContent = pdfService.generateUserProfilePdf(id);
+    @GetMapping("/survey/download/{id}")
+    public ResponseEntity<byte[]> downloadSurveyPdf(@PathVariable Long id) throws IOException, DocumentException {
+        byte[] pdfContent = pdfService.generateSurveyPdf(id);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
-        headers.setContentDispositionFormData("attachment", "user_profile_" + id + ".pdf");
+        headers.setContentDispositionFormData("attachment", "survey_" + id + ".pdf");
         return ResponseEntity.ok().headers(headers).body(pdfContent);
     }
 

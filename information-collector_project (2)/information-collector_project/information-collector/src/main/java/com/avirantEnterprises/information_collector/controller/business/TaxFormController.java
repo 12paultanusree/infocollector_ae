@@ -21,38 +21,38 @@ public class TaxFormController {
     @Autowired
     private TaxService taxService;
 
-    // View specific expense details
+
     @GetMapping("/tax/{id}")
     public String viewTax(@PathVariable Long id, Model model) {
        Tax tax = taxService.getTaxById(id);
         model.addAttribute("tax", tax);
-        return "business/tax_view"; // View template for displaying the specific expense
+        return "business/tax_view";
     }
 
-    // Delete specific expense by id
+
     @GetMapping("/tax/delete/{id}")
     public String deleteTax(@PathVariable Long id) {
         taxService.deleteTaxById(id);
-        return "redirect:/tax_list"; // Redirect to a list of expenses after deletion
+        return "redirect:/tax_list";
     }
 
-    // List all expenses
+
     @GetMapping("/tax_list")
     public String listTaxes(Model model) {
         List<Tax> taxes = taxService.getAllTaxes();
         model.addAttribute("taxes", taxes);
-        return "business/tax_list"; // Template that lists all expenses
+        return "business/tax_list";
     }
 
-    // Show the form to update an existing expense
+
     @GetMapping("/tax/update/{id}")
     public String showUpdateTaxForm(@PathVariable Long id, Model model) {
         Tax tax = taxService.getTaxById(id);
         model.addAttribute("tax", tax);
-        return "business/tax_update"; // Template to show update form
+        return "business/tax_update";
     }
 
-    // Handle the submission of the expense update form
+
     @PostMapping("/updateTax")
     public String updateTax(@RequestParam("id") Long id,
                                 @RequestParam("taxYear") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate taxYear,
@@ -62,16 +62,16 @@ public class TaxFormController {
                             @RequestParam("filingStatus") String filingStatus,
                                 @RequestParam("taxreceipt") MultipartFile taxreceipt) {
         taxService.updateTax(id, taxYear, taxpayerName, income, taxPaid, filingStatus,taxreceipt);
-        return "redirect:/tax/" + id; // Redirect to the updated expense page
+        return "redirect:/tax/" + id;
     }
 
-    // Show the form to add a new expense
+
     @GetMapping("/tax/new")
     public String showTaxForm(Model model) {
-        return "business/tax_form"; // Template to show the form for creating a new expense
+        return "business/tax_form";
     }
 
-    // Handle the submission of the new expense form
+
     @PostMapping("/submitTax")
     public String submitTax(@RequestParam("taxYear") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate taxYear,
                                 @RequestParam("taxpayerName") String taxpayerName,
@@ -80,6 +80,6 @@ public class TaxFormController {
                                 @RequestParam("filingStatus") String filingStatus,
                                 @RequestParam("taxreceipt") MultipartFile taxreceipt) {
         taxService.saveTax(taxYear, taxpayerName, income, taxpaid, filingStatus, taxreceipt);
-        return "business/success"; // Redirect to the list of expenses after submission
+        return "business/success";
     }
 }

@@ -22,7 +22,7 @@ public class InvoiceService {
 
     private final Path rootLocation = Paths.get("upload-business");
 
-    // Method to register a new expense
+
     public void saveInvoice(LocalDate invoiceDate, double invoiceAmount, double invoiceNumber, String invoiceDescription, MultipartFile invoicereceipt) {
         Invoice invoice = new Invoice();
         invoice.setInvoiceDate(invoiceDate);
@@ -30,10 +30,10 @@ public class InvoiceService {
         invoice.setInvoiceNumber(invoiceNumber);
         invoice.setInvoiceDescription(invoiceDescription);
 
-        String invoiceFile = saveFile(invoicereceipt);  // Save the receipt file and get its path
+        String invoiceFile = saveFile(invoicereceipt);
         invoice.setInvoiceFile(invoiceFile);
 
-        invoiceRepository.save(invoice);  // Save the expense to the database
+        invoiceRepository.save(invoice);
     }
 
     // Method to update an existing expense
@@ -46,29 +46,29 @@ public class InvoiceService {
             invoice.setInvoiceNumber(invoiceNumber);
             invoice.setInvoiceDescription(invoiceDescription);
             if (!invoicereceipt.isEmpty()) {
-                String invoiceFile = saveFile(invoicereceipt);  // Save the new receipt file if provided
+                String invoiceFile = saveFile(invoicereceipt);
                 invoice.setInvoiceFile(invoiceFile);
             }
-            invoiceRepository.save(invoice);  // Save the updated expense to the database
+            invoiceRepository.save(invoice);
         }
     }
 
-    // Method to get an expense by its ID
+
     public Invoice getInvoiceById(Long id) {
         return invoiceRepository.findById(id).orElse(null);
     }
 
-    // Method to get all expenses
+
     public List<Invoice> getAllInvoices() {
         return invoiceRepository.findAll();
     }
 
-    // Method to delete an expense by its ID
+
     public void deleteInvoiceById(Long id) {
         invoiceRepository.deleteById(id);
     }
 
-    // Helper method to sanitize the file name before saving
+
     private String sanitizeFileName(String fileName) {
         return fileName.replaceAll("[^a-zA-Z0-9\\.\\-]", "_");  // Sanitize the file name
     }

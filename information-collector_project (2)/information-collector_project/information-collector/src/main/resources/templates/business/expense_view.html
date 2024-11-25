@@ -22,7 +22,26 @@
   </style>
 </head>
 <body>
-<div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img src="/Images/iclogo.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+      Information Collector
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/dashboard">Dashboard</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
   <h2 class="text-center">Expense Details</h2>
 
   <table class="table expense-table">
@@ -54,5 +73,7 @@
     <a th:if="${expense.receiptPath != null}" th:href="@{/files/{fileName}(fileName=${expense.receiptPath})}" class="btn btn-primary" target="_blank">View Attachment</a>
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

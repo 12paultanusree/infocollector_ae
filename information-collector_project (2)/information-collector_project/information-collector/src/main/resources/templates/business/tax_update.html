@@ -12,44 +12,71 @@
   <form th:action="@{/updateTax}" method="post" enctype="multipart/form-data">
     <input type="hidden" th:value="${tax.id}" name="id"/>
 
-    <!-- Expense Date -->
+    <!-- Tax Year -->
     <div class="mb-3">
       <label for="taxYear" class="form-label">Tax Year</label>
       <input type="date" class="form-control" id="taxYear" name="taxYear" th:value="${tax.taxYear}" required>
     </div>
 
-    <!-- Amount -->
+    <!-- Taxpayer Name -->
     <div class="mb-3">
-      <label for="taxpayerName" class="form-label">Tax Payer Name</label>
+      <label for="taxpayerName" class="form-label">Taxpayer Name</label>
       <input type="text" class="form-control" id="taxpayerName" name="taxpayerName" th:value="${tax.taxpayerName}" required>
     </div>
 
-    <!-- Category -->
+    <!-- Income -->
     <div class="mb-3">
-      <label for="income" class="form-label">Tax Amount</label>
-      <input type="number" class="form-control" id="income" name="income" th:value="${tax.income}" required>
+      <label for="income" class="form-label">Income</label>
+      <input type="number" class="form-control" id="income" name="income" th:value="${tax.income}" step="0.01" required oninput="calculateTax()">
     </div>
 
-    <!-- Description -->
+    <!-- Tax Paid -->
     <div class="mb-3">
       <label for="taxPaid" class="form-label">Tax Paid</label>
-      <input type="number" class="form-control" id="taxPaid" name="taxPaid" required th:text="${tax.taxPaid}"></input>
+      <input type="number" class="form-control" id="taxPaid" name="taxPaid" th:value="${tax.taxPaid}" readonly>
     </div>
 
+    <!-- Filing Status -->
     <div class="mb-3">
       <label for="filingStatus" class="form-label">Filing Status</label>
-      <textarea class="form-control" id="filingStatus" name="filingStatus" required th:text="${tax.filingStatus}"></textarea>
+      <select class="form-select" id="filingStatus" name="filingStatus" required>
+        <option value="Single" th:selected="${tax.filingStatus == 'Single'}">Single</option>
+        <option value="Married" th:selected="${tax.filingStatus == 'Married'}">Married</option>
+        <option value="Head of Household" th:selected="${tax.filingStatus == 'Head of Household'}">Head of Household</option>
+        <option value="Other" th:selected="${tax.filingStatus == 'Other'}">Other</option>
+      </select>
     </div>
 
-    <!-- Receipt (optional) -->
+    <!-- Tax Document Upload -->
     <div class="mb-3">
-      <label for="taxreceipt" class="form-label">Receipt (Optional)</label>
-      <input type="file" class="form-control" id="taxreceipt" name="taxreceipt" accept="application/pdf, application/vnd.ms-excel">
-
+      <label for="taxreceipt" class="form-label">Upload Tax Document (Optional)</label>
+      <input type="file" class="form-control" id="taxreceipt" name="taxreceipt" accept="image/*, application/pdf, .xlsx, .xls">
     </div>
 
     <button type="submit" class="btn btn-primary">Update Tax</button>
   </form>
 </div>
+
+<script>
+  function calculateTax() {
+    const income = parseFloat(document.getElementById('income').value) || 0;
+    let taxPaid = 0;
+
+    if (income <= 250000) {
+        taxPaid = 0;
+    } else if (income <= 500000) {
+        taxPaid = (income - 250000) * 0.05;
+    } else if (income <= 1000000) {
+        taxPaid = 12500 + (income - 500000) * 0.20;
+    } else {
+        taxPaid = 112500 + (income - 1000000) * 0.30;
+    }
+
+    document.getElementById('taxPaid').value = taxPaid.toFixed(2);
+}
+</script>
+
+<!-- Optional: Add Bootstrap JS (for interactive components) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

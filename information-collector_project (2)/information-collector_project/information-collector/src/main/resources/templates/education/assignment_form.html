@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment Submission Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <h2 class="text-center">Assignment Submission Form</h2>
+  <form th:action="@{/submitAssignment}" method="post" enctype="multipart/form-data">
+
+    <!-- Student Name -->
+    <div class="mb-3">
+      <label for="studentName" class="form-label">Student Name</label>
+      <input type="text" class="form-control" id="studentName" name="studentName" required>
+    </div>
+
+    <!-- Student ID -->
+    <div class="mb-3">
+      <label for="studentId" class="form-label">Student ID</label>
+      <input type="text" class="form-control" id="studentId" name="studentId" required>
+    </div>
+
+    <!-- Assignment Title -->
+    <div class="mb-3">
+      <label for="assignmentTitle" class="form-label">Assignment Title</label>
+      <input type="text" class="form-control" id="assignmentTitle" name="assignmentTitle" required>
+    </div>
+
+    <!-- Submission Date -->
+    <div class="mb-3">
+      <label for="submissionDate" class="form-label">Submission Date</label>
+      <input type="date" class="form-control" id="submissionDate" name="submissionDate" required>
+    </div>
+
+    <!-- Upload Assignment File -->
+    <div class="mb-3">
+      <label for="assignmentFile" class="form-label">Upload Assignment File (PDF/Word)</label>
+      <input type="file" class="form-control" id="assignmentFile" name="assignmentFile" accept=".pdf, .doc, .docx" required>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Submit Assignment</button>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

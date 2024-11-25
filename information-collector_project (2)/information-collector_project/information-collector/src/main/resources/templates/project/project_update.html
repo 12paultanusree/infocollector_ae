@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Project</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+  <h2 class="text-center">Update Project</h2>
+  <form th:action="@{/updateProject}" method="post" enctype="multipart/form-data">
+    <input type="hidden" th:value="${project.id}" name="id"/>
+
+    <!-- Expense Date -->
+    <div class="mb-3">
+      <label for="fullName" class="form-label">Full Name</label>
+      <input type="text" class="form-control" id="fullName" name="fullName" th:value="${project.fullName}" required>
+    </div>
+
+    <!-- Amount -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" th:value="${project.email}" required>
+    </div>
+
+    <!-- Category -->
+    <div class="mb-3">
+      <label for="projectTitle" class="form-label">Project Title</label>
+      <input type="text" class="form-control" id="projectTitle" name="projectTitle" th:value="${project.projectTitle}" required>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label for="projectDescription" class="form-label">Description</label>
+      <textarea class="form-control" id="projectDescription" name="projectDescription" required th:text="${project.projectDescription}"></textarea>
+    </div>
+
+    <!-- Receipt (optional) -->
+    <div class="mb-3">
+      <label for="proposalPath" class="form-label">Proposal(Optional)</label>
+      <input type="file" class="form-control" id="proposalPath" name="proposalPath" accept="image/*,application/pdf,.xlsx">
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Project</button>
+  </form>
+</div>
+</body>
+</html>

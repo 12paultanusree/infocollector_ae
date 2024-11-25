@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Survey</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">  <style>
+    .receipt-image {
+           max-width: 300px;
+           margin: auto;
+           display: block;
+       }
+       .expense-table {
+           width: 100%;
+           margin: auto;
+       }
+       .expense-table th, .expense-table td {
+           text-align: center;
+           vertical-align: middle;
+       }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center">User Survey</h2>
+    <div class="text-center">
+        <!-- Updated image source to reflect the static location configuration -->
+        <img th:src="@{/files/{fileName}(fileName=${survey.fileUpload})}" alt="Survey File" class="img-thumbnail profile-picture"/>
+    </div>
+    <table class="table profile-table">
+        <tbody>
+        <tr>
+            <th>Name</th>
+            <td th:text="${survey.userName}"></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td th:text="${survey.email}"></td>
+        </tr>
+        <tr>
+            <th>Feedback</th>
+            <td th:text="${survey.feedback}"></td>
+        </tr>
+        <tr>
+            <th>Interests</th>
+            <td th:text="${survey.interests}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="text-center">
+        <a th:href="@{/survey/update/{id}(id=${survey.id})}" class="btn btn-secondary">Update Profile</a>
+        <a th:href="@{/survey/download/{id}(id=${survey.id})}" class="btn btn-secondary">Download Survey as PDF</a>
+        <a th:if="${survey.fileUpload != null}" th:href="@{/files/{fileName}(fileName=${survey.fileUpload})}" class="btn btn-primary" target="_blank">View Attachment</a>
+    </div>
+</div>
+</body>
+</html>

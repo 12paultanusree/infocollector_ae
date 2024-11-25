@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Assignment</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+  <h2 class="text-center">Update Assignment</h2>
+  <form th:action="@{/updateAssign}" method="post" enctype="multipart/form-data">
+    <input type="hidden" th:value="${assignment.id}" name="id"/>
+
+    <!-- Expense Date -->
+    <div class="mb-3">
+      <label for="studentName" class="form-label">Student Name</label>
+      <input type="text" class="form-control" id="studentName" name="studentName" th:value="${assignment.studentName}" required>
+    </div>
+
+    <!-- Amount -->
+    <div class="mb-3">
+      <label for="studentId" class="form-label">Student Id</label>
+      <input type="text" class="form-control" id="studentId" name="studentId" th:value="${assignment.studentId}" required>
+    </div>
+
+    <!-- Category -->
+    <div class="mb-3">
+      <label for="assignmentTitle" class="form-label">Assignment Title</label>
+      <input type="text" class="form-control" id="assignmentTitle" name="assignmentTitle" th:value="${assignment.assignmentTitle}" required>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label for="submissionDate" class="form-label">Description</label>
+      <input type="date" class="form-control" id="submissionDate" name="submissionDate" required th:text="${assignment.submissionDate}" required>
+    </div>
+
+    <!-- Receipt (optional) -->
+    <div class="mb-3">
+      <label for="assignmentPath" class="form-label">Upload File</label>
+      <input type="file" class="form-control" id="assignmentPath" name="assignmentPath" accept="image/*,application/pdf">
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Assignment</button>
+  </form>
+</div>
+</body>
+</html>

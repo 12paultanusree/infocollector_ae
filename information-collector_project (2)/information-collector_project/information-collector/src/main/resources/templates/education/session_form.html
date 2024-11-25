@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Training Feedback Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center">Training Feedback Form</h2>
+    <form th:action="@{/submitSession}" method="post" enctype="multipart/form-data">
+
+        <!-- Participant Name -->
+        <div class="mb-3">
+            <label for="name" class="form-label">Participant Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+
+        <!-- Participant Email -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Participant Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+
+        <!-- Training Session Title -->
+        <div class="mb-3">
+            <label for="title" class="form-label">Training Session Title</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+
+        <!-- Date of Training -->
+        <div class="mb-3">
+            <label for="date" class="form-label">Date of Training</label>
+            <input type="date" class="form-control" id="date" name="date" required>
+        </div>
+
+        <!-- Rating -->
+        <div class="mb-3">
+            <label for="rating" class="form-label">Rating (1 - Poor, 5 - Excellent)</label>
+            <select class="form-select" id="rating" name="rating" required>
+                <option value="" disabled selected>Select your rating</option>
+                <option value="1">1 - Poor</option>
+                <option value="2">2 - Fair</option>
+                <option value="3">3 - Good</option>
+                <option value="4">4 - Very Good</option>
+                <option value="5">5 - Excellent</option>
+            </select>
+        </div>
+
+        <!-- Comments -->
+        <div class="mb-3">
+            <label for="comments" class="form-label">Comments</label>
+            <textarea class="form-control" id="comments" name="comments" rows="4" placeholder="Provide your feedback..." required></textarea>
+        </div>
+
+        <!-- Upload Detailed Report -->
+        <div class="mb-3">
+            <label for="feedbackFile" class="form-label">Upload Detailed Feedback Report (PDF)</label>
+            <input type="file" class="form-control" id="feedbackFile" name="feedbackFile" accept=".pdf" required>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
